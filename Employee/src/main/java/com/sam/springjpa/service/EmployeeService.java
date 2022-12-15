@@ -1,16 +1,41 @@
-package com.sam.springjpa.service;
+package com.ems.employee.service;
 
-import com.sam.springjpa.entity.Employee;
+import java.util.List;
 
-public interface EmployeeService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
-	Iterable<Employee> readAll();
+import com.ems.employee.entity.Employee;
+import com.ems.employee.repository.EmployeeRepository;
 
-	Employee store(Employee emp);
+@Service
+public class EmployeeService{
 
-	void remove(Long id,Employee emp);
+	@Autowired
+	EmployeeRepository employeeRepository;
+	
+	
+	public List<Employee> getAllEmployees() {
+		return employeeRepository.findAll();
+	}
+	
+	public List<Employee> sortEmployees(String field) {
+		return employeeRepository.findAll(Sort.by(field));
+	}
 
-	Employee update(Long id,String fn);
+	
+	public void removeEmployee(long empId) {
+		employeeRepository.deleteById(empId);
+	}
 
+	
+	public Employee updateEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
 
+	
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}	
 }
