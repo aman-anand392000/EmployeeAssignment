@@ -1,24 +1,54 @@
-package com.sam.springjpa.entity;
+package com.ems.employee.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Objects;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "employee")
 public class Employee {
+	
 	@Id
-	@Column(name = "empid")
 	private Long empId;
-	@Column(name = "firstname")
 	private String firstName;
-	@Column(name = "lastname")
-	private String lastName;
-	@Column(name = "age")
+	private String LastName;
 	private int age;
-	@Column(name = "salary")
-	private Double salary;
+	private double salary;
+	
+		
+	public Employee() {
+		super();
+		
+	}
+
+	public Employee(Long empId, String firstName, String lastName, int age, double salary) {
+		super();
+		this.empId = empId;
+		this.firstName = firstName;
+		LastName = lastName;
+		this.age = age;
+		this.salary = salary;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(empId);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(empId, other.empId);
+	}
+
+
 	public Long getEmpId() {
 		return empId;
 	}
@@ -32,10 +62,10 @@ public class Employee {
 		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return lastName;
+		return LastName;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		LastName = lastName;
 	}
 	public int getAge() {
 		return age;
@@ -49,11 +79,11 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+		return "Employee [empId=" + empId + ", firstName=" + firstName + ", LastName=" + LastName + ", age=" + age
 				+ ", salary=" + salary + "]";
 	}
-	
 	
 }
