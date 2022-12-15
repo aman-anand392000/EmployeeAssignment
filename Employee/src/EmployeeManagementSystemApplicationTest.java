@@ -29,28 +29,28 @@ class EmployeeManagementSystemApplicationTests {
 	
 	@Test
 	public void getAllEmployeesTest(){
-		when(repository.findAll()).thenReturn(Stream.of(new Employee(10l, "Aryan", "Sam", 34, 3500),new Employee(l02, "Ram", "Jeet", 36, 3700)).collect(Collectors.toList()));
+		when(repository.findAll()).thenReturn(Stream.of(new Employee(9831, "james", "Smith", 34, 350),new Employee(9841, "james", "Johnson", 36, 370)).collect(Collectors.toList()));
 		assertEquals(2, service.getAllEmployees().size());
 	}
 	
 	@Test
 	public void addEmployeesTest(){
-		Employee employee = new Employee(100l, "Aman", "Anand", 23, 3600);
+		Employee employee = new Employee(9991, "Aman", "Anand", 23, 360);
 		when(repository.save(employee)).thenReturn(employee);
 		assertEquals(employee, service.addEmployee(employee));
 	}
 	
 	@Test
 	public void removeEmployeesTest(){
-		long empId = 100l;
+		long empId = 9991;
 		service.removeEmployee(empId);
 		verify(repository,times(1)).deleteById(empId);
 	}
 	
 	@Test
 	public void updateEmployeesTest(){
-		Employee employee = new Employee(100l, "Aman", "Anand", 23, 3600);
+		Employee employee = new Employee(999l, "Aman", "Anand", 23, 360);
 		when(repository.save(employee)).thenReturn(employee);		
-		Employee employee2 = new Employee(100l, "Ram", "Kumar", 36, 3600);
+		Employee employee2 = new Employee(999l, "Ram", "Kumar", 36, 360);
 		assertEquals(employee, service.updateEmployee(employee2));
 	}
