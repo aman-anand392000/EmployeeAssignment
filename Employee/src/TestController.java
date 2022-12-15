@@ -34,7 +34,7 @@ public class  ControllerTest{
    
 	   @Test
 	   public void getAllEmployeesControllerTest() {
-		   List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(1001, "Ayush", "Kumar", 31, 3600),new Employee(1008, "Pradeep", "Sankar", 34, 3500)));
+		   List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(91111, "AJAY", "Kumar", 32, 360),new Employee(9121, "Neeraj", "Smith", 34, 350)));
 	
 	       when(employeeService.getAllEmployees()).thenReturn(employees);
 	
@@ -51,8 +51,8 @@ public class  ControllerTest{
 	       MockHttpServletRequest request = new MockHttpServletRequest();
 	       RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 	
-	       when(employeeService.addEmployee(any(Employee.class))).thenReturn(new Employee(1001, "Aman", "Anand", 24, 3600));
-	       ResponseEntity<Void> responseEntity = employeeController.addEmployee(new Employee(1001, "Aman", "Anand", 24, 3600));
+	       when(employeeService.addEmployee(any(Employee.class))).thenReturn(new Employee(9111, "Aman", "Anand", 32, 360));
+	       ResponseEntity<Void> responseEntity = employeeController.addEmployee(new Employee(9111, "Aman", "Anand", 32, 3600));
 	       assertThat(responseEntity.getStatusCode().value()).isEqualTo(201);
 	       assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/911");
 	   }
@@ -62,8 +62,8 @@ public class  ControllerTest{
 	{
 		 MockHttpServletRequest request = new MockHttpServletRequest();
 	       RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-	       when(employeeService.updateEmployee(any(Employee.class))).thenReturn(new Employee(1001, "Ayush", "Kumar", 32, 3600));
-	       ResponseEntity<Void> responseEntity = employeeController.updateEmployee(new Employee(1001, "Ayush", "Kumar", 32, 3600));
+	       when(employeeService.updateEmployee(any(Employee.class))).thenReturn(new Employee(9111, "Saurav", "Kumar", 32, 360));
+	       ResponseEntity<Void> responseEntity = employeeController.updateEmployee(new Employee(9111, "Saurav", "Kumar", 32, 360));
 	       assertThat(responseEntity.getStatusCode().value()).isEqualTo(200);
 	}
 	
