@@ -1,9 +1,11 @@
-package com.sam.springjpa.repository;
+package com.ems.employee.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.sam.springjpa.entity.Employee;
+import com.ems.employee.entity.Employee;
 
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
 }
